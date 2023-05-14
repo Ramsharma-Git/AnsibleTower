@@ -1,0 +1,19 @@
+---
+- hosts: web
+  tasks:
+    - yum:
+        name: httpd
+        state: present
+        
+    - service:
+        name: httpd
+        state: started
+        enabled: yes
+        
+    - template:
+        src: web.j2
+        dest: /var/www/html/index.j2
+        
+    - service:
+        name: httpd
+        state: restarted
