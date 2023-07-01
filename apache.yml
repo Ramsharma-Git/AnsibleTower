@@ -1,18 +1,32 @@
 ---
 - hosts: prod
+  gather_facts: no
   tasks:
     - dnf:
         name: httpd
         state: present
-        
+
+- hosts: 13.127.145.216
+  gather_facts: no
+  tasks:
+    - copy:
+        src: website1/*
+        dest: /var/www/html/
+
+- hosts: 13.127.201.92
+  gather_facts: no
+  tasks:
+    - copy:
+        src: website2/*
+        dest: /var/www/html/
+
+- hosts: prod
+  gather_facts: no
+  tasks:
     - service:
         name: httpd
         state: started
         enabled: yes
-        
-    - copy:
-        src: website1/*
-        dest: /var/www/html/
         
     - service:
         name: httpd
