@@ -1,5 +1,5 @@
 ---
-- hosts: prod
+- hosts: balancer
   tasks:
       - yum: 
           name: haproxy
