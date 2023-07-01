@@ -10,9 +10,9 @@
         state: started
         enabled: yes
         
-    - template:
-        src: web.j2
-        dest: /var/www/html/index.html
+    - copy:
+        src: website1/*
+        dest: /var/www/html/
         
     - service:
         name: httpd
