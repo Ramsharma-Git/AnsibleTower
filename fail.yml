@@ -1,0 +1,9 @@
+---
+- hosts: prod
+  tasks:
+    - raw: echo "Something went wrong" > /var/www/html/index.html
+    
+    - service:
+        name: httpd
+        state: restarted
+        
