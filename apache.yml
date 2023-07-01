@@ -9,16 +9,24 @@
 - hosts: 13.127.145.216
   gather_facts: no
   tasks:
-    - copy:
-        src: website1/*
+    - synchronize:
+        src: website1/
         dest: /var/www/html/
+        recursive: yes
+        delete: no
+        rsync_opts:
+          - "--no-relative"
 
 - hosts: 13.127.201.92
   gather_facts: no
   tasks:
-    - copy:
-        src: website2/*
+    - synchronize:
+        src: website2/
         dest: /var/www/html/
+        recursive: yes
+        delete: no
+        rsync_opts:
+          - "--no-relative"
 
 - hosts: prod
   gather_facts: no
