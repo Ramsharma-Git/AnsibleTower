@@ -1,0 +1,17 @@
+---
+- hosts: balancer
+  tasks:
+    - dnf:
+        name: haproxy
+        state: absent
+
+    - dnf:
+        name: httpd
+        state: present
+
+    - raw: echo "haproxy is not running" > /var/www/html/index.html
+    
+    - service:
+        name: httpd
+        state: started
+        enabled: yes
