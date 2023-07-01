@@ -6,27 +6,21 @@
         name: httpd
         state: present
 
-- hosts: 13.127.145.216
+- hosts: 3.109.123.90
   gather_facts: no
   tasks:
     - synchronize:
-        src: website1/
+        src: website1/.
         dest: /var/www/html/
         recursive: yes
-        delete: no
-        rsync_opts:
-          - "--no-relative"
 
-- hosts: 13.127.201.92
+- hosts: 13.232.62.115
   gather_facts: no
   tasks:
     - synchronize:
-        src: website2/
+        src: website2/.
         dest: /var/www/html/
         recursive: yes
-        delete: no
-        rsync_opts:
-          - "--no-relative"
 
 - hosts: prod
   gather_facts: no
